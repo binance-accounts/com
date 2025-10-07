@@ -1,0 +1,249 @@
+<!-- index.html
+     Demo registration page "Bounce" — design-only.
+     NOT a copy of any real service. Form is non-functional and marked DEMO.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bounce — Create Personal Account (Demo)</title>
+<style>
+  :root{
+    --bg:#0f1113;
+    --panel:#141618;
+    --muted:#9aa0a6;
+    --accent:#f6c400; /* yellow accent */
+    --input:#1c1e20;
+    --text:#e9ecf0;
+    --radius:12px;
+    --glass: rgba(255,255,255,0.02);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:linear-gradient(180deg,var(--bg),#0b0b0b 60%);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:18px;
+  }
+
+  .container{
+    width:100%;
+    max-width:760px;
+    background:transparent;
+  }
+
+  /* top bar with site badge */
+  .topbar{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-bottom:14px;
+  }
+  .urlbar{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    padding:10px 12px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    max-width:420px;
+  }
+  .secure-dot{
+    width:18px;height:18px;border-radius:50%;background:#1fbb67;box-shadow:0 0 0 3px rgba(31,187,103,0.06) inset;
+  }
+  .url-text{font-size:14px;color:var(--muted);}
+
+  /* disclaimer banner */
+  .banner{
+    background:#1a1c1e;
+    border-radius:10px;
+    padding:14px 16px;
+    margin:8px 0 20px 0;
+    color:var(--text);
+    line-height:1.35;
+    font-size:15px;
+  }
+  .banner a{color:var(--accent); text-decoration:underline;}
+
+  /* card */
+  .card{
+    background: linear-gradient(180deg,var(--panel), #0f1113 60%);
+    padding:28px;
+    border-radius:18px;
+    box-shadow: 0 8px 30px rgba(2,4,6,0.6);
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  .logo{
+    width:36px;height:36px;border-radius:8px;
+    background:linear-gradient(135deg,#ffd34d,#f1b400);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:#111;
+    box-shadow: 0 3px 10px rgba(246,196,0,0.15);
+  }
+  .brand h1{margin:0;font-size:18px;letter-spacing:0.2px;}
+
+  .demo-chip{
+    margin-left:auto;
+    font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted);
+  }
+
+  h2{
+    margin:6px 0 16px 0;
+    font-size:32px;
+    line-height:1.02;
+  }
+  label{display:block;color:var(--muted);font-size:14px;margin-bottom:8px;}
+  input[type="text"], input[type="email"], input[type="tel"]{
+    width:100%;
+    padding:16px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.03);
+    background:var(--input);
+    color:var(--text);
+    font-size:16px;
+    box-sizing:border-box;
+    outline:none;
+  }
+  .small{
+    font-size:13px;color:var(--muted);margin-top:10px;
+  }
+  .small a{color:var(--accent);text-decoration:underline;}
+
+  .btn{
+    margin-top:18px;
+    width:100%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 18px;
+    border-radius:14px;
+    background:linear-gradient(180deg,var(--accent), #d8a400);
+    color:#111;
+    font-weight:600;
+    font-size:16px;
+    border:none;
+    cursor:pointer;
+  }
+
+  .footer{
+    margin-top:28px;
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:14px;
+  }
+
+  .help-circle{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    width:64px;height:64px;border-radius:50%;
+    background:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 30px rgba(0,0,0,0.5);
+    color:#111;font-weight:700;
+  }
+
+  /* mobile-like bottom nav mimic */
+  .bottom-nav{
+    margin-top:22px;
+    display:flex;
+    gap:24px;
+    justify-content:center;
+    color:var(--muted);
+    font-size:18px;
+  }
+
+  /* responsive tightening for narrow screens */
+  @media (max-width:420px){
+    .card{padding:18px;border-radius:16px;}
+    h2{font-size:28px;}
+    .logo{width:34px;height:34px;}
+    .btn{padding:12px;border-radius:12px;}
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar" aria-hidden="true">
+      <div class="urlbar">
+        <div class="secure-dot" aria-hidden="true"></div>
+        <div class="url-text">accounts.bounce.com</div>
+      </div>
+    </div>
+
+    <div class="banner">
+      <strong>Don’t invest unless you’re prepared to lose all the money you invest.</strong>
+      This is a high-risk investment and you should not expect to be protected if something goes wrong.
+      <a href="#" onclick="return false">Take 2 mins to learn more.</a>
+    </div>
+
+    <div class="card" role="main" aria-labelledby="pageTitle">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">B</div>
+        <h1>Bounce</h1>
+        <div class="demo-chip">DEMO</div>
+      </div>
+
+      <h2 id="pageTitle">Create Personal Account</h2>
+
+      <form onsubmit="event.preventDefault(); alert('This is a demo page — no data is sent.');" aria-label="Create personal account (demo)">
+        <label for="contact">Email/Phone number</label>
+        <input id="contact" name="contact" type="text" placeholder="Enter email or phone" autocomplete="off" />
+
+        <p class="small">By creating an account, I agree to Bounce's
+          <a href="#" onclick="return false">Terms of Service</a> and
+          <a href="#" onclick="return false">Privacy Notice</a>.
+        </p>
+
+        <button class="btn" type="submit">Next</button>
+      </form>
+
+      <p class="small" style="margin-top:14px;">Not looking for a personal account?
+        <a href="#" onclick="return false"> Sign up for an entity account</a>
+      </p>
+
+      <div class="footer" aria-hidden="true">
+        <div>Bounce © 2025</div>
+        <div>Cookie Preferences</div>
+      </div>
+    </div>
+
+    <div class="bottom-nav" aria-hidden="true">
+      <div style="opacity:0.9;">←</div>
+      <div style="opacity:0.9;">→</div>
+      <div style="opacity:0.9;">🔥</div>
+      <div style="opacity:0.9;border:1px solid rgba(255,255,255,0.05);padding:6px;border-radius:8px;">14</div>
+      <div style="opacity:0.9;">≡</div>
+    </div>
+  </div>
+
+  <div class="help-circle" title="Help (demo)">?</div>
+
+  <script>
+    // keep clearly demo-only behavior
+    (function(){
+      const form = document.querySelector('form');
+      form.addEventListener('submit', e=>{
+        e.preventDefault();
+        // show demo notice instead of sending data
+        alert('This is a design demo of the Bounce registration page. No data will be transmitted.');
+      });
+    })();
+  </script>
+</body>
+</html>
